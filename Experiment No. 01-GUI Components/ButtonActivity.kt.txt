@@ -1,0 +1,32 @@
+package com.example.fontcolorapp
+
+import android.graphics.Color
+import android.graphics.Typeface
+import android.os.Bundle
+import android.widget.Button
+import android.widget.TextView
+import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
+
+class ButtonActivity : AppCompatActivity() {
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_main)
+
+        val text = findViewById<TextView>(R.id.myText)
+        val button = findViewById<Button>(R.id.changeBtn)
+
+        button.setOnClickListener {
+
+            // Change text color
+            text.setTextColor(Color.RED)
+
+            // Change font style
+            text.setTypeface(null, Typeface.BOLD_ITALIC)
+
+            // Show toast
+            Toast.makeText(this, "Style Changed!", Toast.LENGTH_SHORT).show()
+        }
+    }
+}
