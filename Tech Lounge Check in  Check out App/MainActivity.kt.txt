@@ -1,0 +1,42 @@
+
+package com.example.techloungecounter
+
+import androidx.appcompat.app.AppCompatActivity
+import android.os.Bundle
+import android.widget.Button
+import android.widget.TextView
+
+class MainActivity : AppCompatActivity() {
+
+    private var count = 0
+    private lateinit var countText: TextView
+    private lateinit var checkInBtn: Button
+    private lateinit var checkOutBtn: Button
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_main)
+
+        countText = findViewById(R.id.countText)
+        checkInBtn = findViewById(R.id.checkInBtn)
+        checkOutBtn = findViewById(R.id.checkOutBtn)
+
+        updateCount()
+
+        checkInBtn.setOnClickListener {
+            count++
+            updateCount()
+        }
+
+        checkOutBtn.setOnClickListener {
+            if (count > 0) {
+                count--
+            }
+            updateCount()
+        }
+    }
+
+    private fun updateCount() {
+        countText.text = count.toString()
+    }
+}
