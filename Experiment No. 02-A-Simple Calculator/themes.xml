@@ -1,0 +1,21 @@
+<style name="calcBtn">
+    <item name="android:layout_width">0dp</item>
+    <item name="android:layout_height">0dp</item>
+    <item name="android:layout_columnWeight">1</item>
+    <item name="android:layout_rowWeight">1</item>
+    <item name="android:textSize">20sp</item>
+    <item name="android:backgroundTint">#1E293B</item>
+    <item name="android:textColor">#FFFFFF</item>
+</style>
+
+<style name="calcBtnOp" parent="calcBtn">
+    <item name="android:backgroundTint">#334155</item>
+</style>
+
+<style name="calcBtnEqual" parent="calcBtn">
+    <item name="android:backgroundTint">#F59E0B</item>
+</style>
+
+<style name="calcBtnWide" parent="calcBtn">
+    <item name="android:layout_columnSpan">2</item>
+</style>
