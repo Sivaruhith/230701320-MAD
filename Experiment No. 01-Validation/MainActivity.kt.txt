@@ -1,0 +1,48 @@
+package com.example.uservalidation
+
+import android.os.Bundle
+import android.widget.Button
+import android.widget.EditText
+import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
+
+class MainActivity : AppCompatActivity() {
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_main)
+
+        val etUsername = findViewById<EditText>(R.id.etUsername)
+        val etId = findViewById<EditText>(R.id.etId)
+        val btnValidate = findViewById<Button>(R.id.btnValidate)
+
+        btnValidate.setOnClickListener {
+
+            val username = etUsername.text.toString().trim()
+            val id = etId.text.toString().trim()
+
+            // 1️⃣ Check empty fields
+            if (username.isEmpty() || id.isEmpty()) {
+                Toast.makeText(this, "Both fields should not be empty", Toast.LENGTH_SHORT).show()
+                return@setOnClickListener
+            }
+
+            // 2️⃣ Username validation (only alphabets)
+            val nameRegex = Regex("^[A-Za-z]+$")
+            if (!nameRegex.matches(username)) {
+                Toast.makeText(this, "Username should contain only alphabets", Toast.LENGTH_SHORT).show()
+                return@setOnClickListener
+            }
+
+            // 3️⃣ ID validation (only 4 digits)
+            val idRegex = Regex("^[0-9]{4}$")
+            if (!idRegex.matches(id)) {
+                Toast.makeText(this, "ID must be exactly 4 digits", Toast.LENGTH_SHORT).show()
+                return@setOnClickListener
+            }
+
+            // Success
+            Toast.makeText(this, "Validation Successful ✅", Toast.LENGTH_LONG).show()
+        }
+    }
+}
